@@ -3,10 +3,12 @@ import { type Config } from "drizzle-kit";
 import { env } from "@/env";
 
 export default {
-  schema: "./src/server/db/schema.ts",
+  schema: "./src/server/db/schema",
+  out: "./src/server/db/migration",
+  verbose: true,
   dialect: "postgresql",
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["kosting_*"],
+  schemaFilter: ["public"],
 } satisfies Config;
