@@ -25,7 +25,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@lib/supabase/client";
-import { removeTrailingPeriod } from "@lib/utils";
+import { getBaseUrl, removeTrailingPeriod } from "@lib/utils";
 import { Spinner } from "@src/components/ui/spinner";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -89,7 +89,7 @@ export function SignUpForm({
         email: data.email,
         password: data.password,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/email-confirmed`,
+          emailRedirectTo: `${getBaseUrl()}/auth/email-confirmed`,
         },
       });
 
