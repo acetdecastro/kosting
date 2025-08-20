@@ -154,7 +154,7 @@ export function SignInForm({
                     {isLoading ? (
                       <>
                         <Spinner />
-                        {"Signing in"}
+                        Signing in...
                       </>
                     ) : (
                       "Sign in"
