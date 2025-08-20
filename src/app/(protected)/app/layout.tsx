@@ -1,7 +1,6 @@
 import "@src/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@src/trpc/react";
 import { headers } from "next/headers";
@@ -14,11 +13,6 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -29,7 +23,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body>
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider
