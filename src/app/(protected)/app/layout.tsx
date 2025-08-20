@@ -10,7 +10,7 @@ import { ThemeProvider } from "@src/components/providers/theme-provider";
 export const metadata: Metadata = {
   title: "Kosting",
   description: "Pricing Calculator for Small Businesses",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  //   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default async function RootLayout({
