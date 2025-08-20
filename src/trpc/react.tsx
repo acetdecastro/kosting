@@ -10,6 +10,7 @@ import SuperJSON from "superjson";
 import { type AppRouter } from "@src/server/api/root";
 import { createQueryClient } from "@src/trpc/query-client";
 import { readSSROnlySecret } from "ssr-only-secrets";
+import { env } from "@src/env";
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
@@ -85,6 +86,7 @@ export function TRPCReactProvider(props: {
 
 function getBaseUrl() {
   if (typeof window !== "undefined") return window.location.origin;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (env.NEXT_PUBLIC_VERCEL_URL)
+    return `https://${env.NEXT_PUBLIC_VERCEL_URL}`;
   return `http://localhost:${process.env.PORT ?? 3000}`;
 }
