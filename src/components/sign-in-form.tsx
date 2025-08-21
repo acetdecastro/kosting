@@ -25,9 +25,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@lib/supabase/client";
-import { removeTrailingPeriod } from "@lib/utils";
+import { removeTrailingPeriod, withEllipsis } from "@lib/utils";
 import { Spinner } from "@src/components/ui/spinner";
 import { Eye, EyeOff } from "lucide-react";
+import { FullPageLoader } from "@src/components/ui/full-page-loader";
 
 const signInSchema = z.object({
   email: z
@@ -45,6 +46,7 @@ export function SignInForm({
 }: React.ComponentProps<"div">) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
@@ -69,6 +71,7 @@ export function SignInForm({
 
       if (error) throw error;
 
+      setRedirecting(true);
       router.push("/app");
     } catch (error: unknown) {
       setError(
@@ -80,6 +83,10 @@ export function SignInForm({
       setIsLoading(false);
     }
   };
+
+  if (redirecting) {
+    return <FullPageLoader message="Redirecting" />;
+  }
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -94,6 +101,7 @@ export function SignInForm({
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSignIn)}>
               <div className="flex flex-col gap-6">
+                {/* Email */}
                 <FormField
                   control={form.control}
                   name="email"
@@ -154,7 +162,7 @@ export function SignInForm({
                     {isLoading ? (
                       <>
                         <Spinner />
-                        Signing in...
+                        {withEllipsis("Signing in")}
                       </>
                     ) : (
                       "Sign in"

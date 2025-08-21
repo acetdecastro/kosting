@@ -16,3 +16,7 @@ export function getBaseUrl() {
     return `https://${env.NEXT_PUBLIC_VERCEL_URL}`;
   return `http://localhost:${process.env.PORT ?? 3000}`;
 }
+
+export function withEllipsis(text: string): string {
+  return text.endsWith("...") ? text : `${text}...`;
+}

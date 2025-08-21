@@ -1,7 +1,7 @@
 import "@src/styles/globals.css";
 
 import { type Metadata } from "next";
-
+import { Inter } from "next/font/google";
 import { TRPCReactProvider } from "@src/trpc/react";
 import { headers } from "next/headers";
 import { cloakSSROnlySecret } from "ssr-only-secrets";
@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   //   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -23,7 +28,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body>
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider

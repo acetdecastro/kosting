@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Card,
@@ -10,17 +10,28 @@ import {
 } from "@src/components/ui/card";
 import { Button } from "@src/components/ui/button";
 import Link from "next/link";
+import { FullPageLoader } from "@src/components/ui/full-page-loader";
 
 export default function Page() {
   const router = useRouter();
+  const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/app");
-    }, 6000);
+      setRedirecting(true);
+
+      // give loader a moment to render before navigating
+      setTimeout(() => {
+        router.push("/app");
+      }, 1000);
+    }, 4500);
 
     return () => clearTimeout(timer);
   }, [router]);
+
+  if (redirecting) {
+    return <FullPageLoader message="Redirecting" />;
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
@@ -35,7 +46,9 @@ export default function Page() {
           </p>
           <div className="flex flex-col gap-2">
             <Link href="/app" passHref>
-              <Button className="w-full">Go now</Button>
+              <Button className="w-full" onClick={() => setRedirecting(true)}>
+                Go now
+              </Button>
             </Link>
           </div>
         </CardContent>

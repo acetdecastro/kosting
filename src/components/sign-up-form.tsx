@@ -25,9 +25,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@lib/supabase/client";
-import { getBaseUrl, removeTrailingPeriod } from "@lib/utils";
+import { getBaseUrl, removeTrailingPeriod, withEllipsis } from "@lib/utils";
 import { Spinner } from "@src/components/ui/spinner";
 import { Eye, EyeOff } from "lucide-react";
+import { FullPageLoader } from "@src/components/ui/full-page-loader";
 
 const signUpSchema = z
   .object({
@@ -53,6 +54,7 @@ export function SignUpForm({
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
 
   const router = useRouter();
 
@@ -95,6 +97,7 @@ export function SignUpForm({
 
       if (authError) throw authError;
 
+      setRedirecting(true);
       router.push("/auth/sign-up-success");
     } catch (err: unknown) {
       setError(
@@ -106,6 +109,10 @@ export function SignUpForm({
       setIsLoading(false);
     }
   };
+
+  if (redirecting) {
+    return <FullPageLoader message="Redirecting" />;
+  }
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -218,8 +225,8 @@ export function SignUpForm({
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? (
                     <>
-                      <Spinner className="mr-2 h-4 w-4" />
-                      Creating your account...
+                      <Spinner />
+                      {withEllipsis("Creating your account")}
                     </>
                   ) : (
                     "Sign up"
