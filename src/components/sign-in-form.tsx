@@ -91,11 +91,11 @@ export function SignInForm({
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
-        <CardHeader>
-          <CardTitle>Sign in to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to sign in to your account
-          </CardDescription>
+        <CardHeader className="flex items-center justify-between">
+          <CardTitle>Sign In</CardTitle>
+          <Link href="/" className="text-muted-foreground" tabIndex={-1}>
+            Kosting
+          </Link>
         </CardHeader>
         <CardContent>
           <Form {...form}>

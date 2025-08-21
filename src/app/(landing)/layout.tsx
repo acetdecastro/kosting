@@ -1,10 +1,8 @@
 import "@src/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Inter } from "next/font/google";
-import { TRPCReactProvider } from "@src/trpc/react";
-import { headers } from "next/headers";
-import { cloakSSROnlySecret } from "ssr-only-secrets";
+import { Fira_Sans } from "next/font/google";
+
 import { ThemeProvider } from "@src/components/providers/theme-provider";
 
 export const metadata: Metadata = {
@@ -13,33 +11,26 @@ export const metadata: Metadata = {
   //   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const inter = Inter({
+const firaSans = Fira_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-fira-sans",
+  weight: ["200", "400", "500", "600", "700", "800", "900"],
 });
 
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const cookie = new Headers(await headers()).get("cookie");
-  const encryptedCookie = await cloakSSROnlySecret(
-    cookie ?? "",
-    "SECRET_CLIENT_COOKIE_VAR",
-  );
-
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={firaSans.variable} suppressHydrationWarning>
       <body>
-        <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            // enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </TRPCReactProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          // enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
