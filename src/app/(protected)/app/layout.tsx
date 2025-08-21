@@ -6,6 +6,9 @@ import { TRPCReactProvider } from "@src/trpc/react";
 import { headers } from "next/headers";
 import { cloakSSROnlySecret } from "ssr-only-secrets";
 import { ThemeProvider } from "@src/components/providers/theme-provider";
+import { AppSidebar } from "@src/components/app-sidebar";
+import { SiteHeader } from "@src/components/site-header";
+import { SidebarInset, SidebarProvider } from "@src/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Kosting",
@@ -35,10 +38,23 @@ export default async function RootLayout({
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
-            // enableSystem
+            enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SidebarProvider
+              style={
+                {
+                  "--sidebar-width": "calc(var(--spacing) * 72)",
+                  "--header-height": "calc(var(--spacing) * 12)",
+                } as React.CSSProperties
+              }
+            >
+              <AppSidebar variant="inset" />
+              <SidebarInset>
+                <SiteHeader />
+                {children}
+              </SidebarInset>
+            </SidebarProvider>
           </ThemeProvider>
         </TRPCReactProvider>
       </body>

@@ -41,22 +41,20 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
   const pathname = request.nextUrl.pathname;
+  const url = request.nextUrl.clone();
 
-  // Protect /app/*
-  if (pathname.startsWith("/app") && !user) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/auth/sign-in";
-    return NextResponse.redirect(url);
+  if (user) {
+    if (pathname === "/app") url.pathname = "/app/dashboard";
+    else if (
+      pathname.startsWith("/auth") &&
+      pathname !== "/auth/email-confirmed"
+    )
+      url.pathname = "/app/dashboard";
+  } else {
+    if (pathname.startsWith("/app")) url.pathname = "/auth/sign-in";
   }
 
-  // If logged in, redirect to /app when visiting /auth/* (except /auth/email-confirmed)
-  if (
-    user &&
-    pathname.startsWith("/auth") &&
-    pathname !== "/auth/email-confirmed"
-  ) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/app";
+  if (url.pathname !== pathname) {
     return NextResponse.redirect(url);
   }
 

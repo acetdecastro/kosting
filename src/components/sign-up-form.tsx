@@ -137,7 +137,7 @@ export function SignUpForm({
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="m@example.com"
+                          placeholder="mail@example.com"
                           {...field}
                         />
                       </FormControl>
