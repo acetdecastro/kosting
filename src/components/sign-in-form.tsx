@@ -8,7 +8,6 @@ import { Button } from "@src/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@src/components/ui/card";
@@ -72,7 +71,7 @@ export function SignInForm({
       if (error) throw error;
 
       setRedirecting(true);
-      router.push("/app");
+      router.push("/app/dashboard");
     } catch (error: unknown) {
       setError(
         error instanceof Error
@@ -111,7 +110,7 @@ export function SignInForm({
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="m@example.com"
+                          placeholder="mail@example.com"
                           {...field}
                         />
                       </FormControl>

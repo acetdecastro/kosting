@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Circle } from "lucide-react";
 import { cn } from "@lib/utils";
 import { ThemeSwitcher } from "./theme-switcher";
 import Link from "next/link";
@@ -83,7 +82,6 @@ export type HeroGeometricProps = {
 };
 
 export default function HeroGeometric({
-  badge = "shadcn.io",
   title1 = "Smart Costing Made Simple",
   title2 = "Built for entrepreneurs & makers",
   description = "Track product costs, set optimal prices, and monitor profitability. All in one place. Perfect for food sellers and makers.",
