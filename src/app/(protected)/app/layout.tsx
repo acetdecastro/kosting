@@ -1,7 +1,7 @@
 import "@src/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fira_Sans } from "next/font/google";
 import { TRPCReactProvider } from "@src/trpc/react";
 import { headers } from "next/headers";
 import { cloakSSROnlySecret } from "ssr-only-secrets";
@@ -13,9 +13,10 @@ export const metadata: Metadata = {
   //   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const inter = Inter({
+const firaSans = Fira_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-fira-sans",
+  weight: ["200", "400", "500", "600", "700", "800", "900"],
 });
 
 export default async function RootLayout({
@@ -28,7 +29,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={firaSans.variable} suppressHydrationWarning>
       <body>
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider

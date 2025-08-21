@@ -8,13 +8,13 @@ import { Button } from "@src/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@src/components/ui/card";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -117,9 +117,11 @@ export function SignUpForm({
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
-        <CardHeader>
-          <CardTitle>Sign up</CardTitle>
-          <CardDescription>Create a new account</CardDescription>
+        <CardHeader className="flex items-center justify-between">
+          <CardTitle>Sign Up</CardTitle>
+          <Link href="/" className="text-muted-foreground" tabIndex={-1}>
+            Kosting
+          </Link>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -176,6 +178,9 @@ export function SignUpForm({
                           )}
                         </Button>
                       </div>
+                      <FormDescription className="text-xs">
+                        Minimum of 8 characters
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}

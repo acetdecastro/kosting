@@ -49,11 +49,11 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // If logged in, redirect to /app when visiting / or /auth/* (except /auth/email-confirmed)
+  // If logged in, redirect to /app when visiting /auth/* (except /auth/email-confirmed)
   if (
     user &&
-    (pathname === "/" ||
-      (pathname.startsWith("/auth") && pathname !== "/auth/email-confirmed"))
+    pathname.startsWith("/auth") &&
+    pathname !== "/auth/email-confirmed"
   ) {
     const url = request.nextUrl.clone();
     url.pathname = "/app";
