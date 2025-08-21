@@ -22,7 +22,7 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={firaSans.variable} suppressHydrationWarning>
-      <body>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

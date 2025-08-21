@@ -30,7 +30,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={firaSans.variable} suppressHydrationWarning>
-      <body>
+      <body className="antialiased">
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider
             attribute="class"

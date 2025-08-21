@@ -183,7 +183,7 @@ export default function HeroGeometric({
             </Link>
             <Link
               href="/auth/sign-up"
-              className="to-primary/90 sm:text- bg-gradient-to-b from-teal-500 bg-clip-text text-sm font-extrabold text-transparent transition-all duration-200 hover:text-teal-200/30 sm:text-lg md:text-xl"
+              className="to-primary/90 sm:text- bg-gradient-to-b from-teal-500 bg-clip-text text-sm font-extrabold text-transparent transition-all duration-200 hover:text-teal-200/40 sm:text-lg md:text-xl"
             >
               Sign Up For Free
             </Link>
@@ -197,14 +197,14 @@ export default function HeroGeometric({
             animate="visible"
             className="w-auto"
           >
-            <h1 className="mb-6 text-4xl font-bold sm:text-5xl md:mb-8 md:text-8xl">
+            <h1 className="mb-6 text-2xl font-bold sm:text-5xl md:mb-8 md:text-8xl">
               <span className="from-primary to-primary/80 bg-gradient-to-b bg-clip-text text-transparent">
                 {title1}
               </span>
               <br />
               <span
                 className={cn(
-                  "from-primary to-primary/80 bg-gradient-to-b bg-clip-text text-transparent",
+                  "from-primary to-primary/70 bg-gradient-to-b bg-clip-text text-transparent",
                 )}
               >
                 {title2}
@@ -218,13 +218,13 @@ export default function HeroGeometric({
             initial="hidden"
             animate="visible"
           >
-            <p className="text-primary/70 mx-auto mb-8 max-w-xl px-4 text-base font-normal sm:text-lg md:text-xl">
+            <p className="text-primary/60 mx-auto mb-8 max-w-xl px-4 text-xs font-normal sm:text-base md:text-2xl">
               {description}
             </p>
           </motion.div>
         </div>
       </div>
-      <div className="from-accent/10 to-primary/20 pointer-events-none absolute inset-0 bg-gradient-to-t" />
+      <div className="from-accent/10 to-primary/20 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent" />
     </div>
   );
 }
