@@ -29,6 +29,8 @@ import { getBaseUrl, removeTrailingPeriod, withEllipsis } from "@lib/utils";
 import { Spinner } from "@src/components/ui/spinner";
 import { Eye, EyeOff } from "lucide-react";
 import { FullPageLoader } from "@src/components/ui/full-page-loader";
+import { ROUTES } from "@src/constants";
+import AuthBrand from "./auth-brand";
 
 const signUpSchema = z
   .object({
@@ -82,7 +84,7 @@ export function SignUpForm({
       if (existsError) throw existsError;
 
       if (exists) {
-        setError("Try using a different email address, or signing in");
+        setError("Try using a different email address or signing in");
         setIsLoading(false);
         return;
       }
@@ -91,14 +93,14 @@ export function SignUpForm({
         email: data.email,
         password: data.password,
         options: {
-          emailRedirectTo: `${getBaseUrl()}/auth/email-confirmed`,
+          emailRedirectTo: `${getBaseUrl() + ROUTES.auth.emailConfirmed}`,
         },
       });
 
       if (authError) throw authError;
 
       setRedirecting(true);
-      router.push("/auth/sign-up-success");
+      router.push(ROUTES.auth.signUpSuccess);
     } catch (err: unknown) {
       setError(
         err instanceof Error
@@ -119,9 +121,7 @@ export function SignUpForm({
       <Card>
         <CardHeader className="flex items-center justify-between">
           <CardTitle>Sign Up</CardTitle>
-          <Link href="/" className="text-muted-foreground" tabIndex={-1}>
-            Kosting
-          </Link>
+          <AuthBrand />
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -243,7 +243,10 @@ export function SignUpForm({
 
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
-            <Link href="/auth/sign-in" className="underline underline-offset-4">
+            <Link
+              href={ROUTES.auth.signIn}
+              className="underline underline-offset-4"
+            >
               Sign in
             </Link>
           </div>

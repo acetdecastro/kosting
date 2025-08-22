@@ -4,6 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@src/components/ui/card";
+import { ROUTES } from "@src/constants";
 import Link from "next/link";
 
 export default async function Page({
@@ -35,18 +36,21 @@ export default async function Page({
               )}
               <div className="mt-4 flex flex-col space-y-1 text-sm">
                 <Link
-                  href="/auth/sign-in"
+                  href={ROUTES.auth.signIn}
                   className="w-fit underline underline-offset-4"
                 >
                   Sign in
                 </Link>
                 <Link
-                  href="/auth/sign-up"
+                  href={ROUTES.auth.signUp}
                   className="w-fit underline underline-offset-4"
                 >
                   Sign up
                 </Link>
-                <Link href="/" className="w-fit underline underline-offset-4">
+                <Link
+                  href={ROUTES.root}
+                  className="w-fit underline underline-offset-4"
+                >
                   Kosting
                 </Link>
               </div>

@@ -28,6 +28,8 @@ import { removeTrailingPeriod, withEllipsis } from "@lib/utils";
 import { Spinner } from "@src/components/ui/spinner";
 import { Eye, EyeOff } from "lucide-react";
 import { FullPageLoader } from "@src/components/ui/full-page-loader";
+import { ROUTES } from "@src/constants";
+import AuthBrand from "./auth-brand";
 
 const signInSchema = z.object({
   email: z
@@ -71,7 +73,7 @@ export function SignInForm({
       if (error) throw error;
 
       setRedirecting(true);
-      router.push("/app/dashboard");
+      router.push(ROUTES.app.dashboard);
     } catch (error: unknown) {
       setError(
         error instanceof Error
@@ -92,9 +94,7 @@ export function SignInForm({
       <Card>
         <CardHeader className="flex items-center justify-between">
           <CardTitle>Sign In</CardTitle>
-          <Link href="/" className="text-muted-foreground" tabIndex={-1}>
-            Kosting
-          </Link>
+          <AuthBrand />
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -179,7 +179,10 @@ export function SignInForm({
 
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Link href="/auth/sign-up" className="underline underline-offset-4">
+            <Link
+              href={ROUTES.auth.signUp}
+              className="underline underline-offset-4"
+            >
               Sign up
             </Link>
           </div>

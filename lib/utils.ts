@@ -12,7 +12,10 @@ export function removeTrailingPeriod(str: string): string {
 
 export function getBaseUrl() {
   if (typeof window !== "undefined") return window.location.origin;
-  if (env.NEXT_PUBLIC_VERCEL_URL)
+  if (
+    env.NEXT_PUBLIC_VERCEL_URL &&
+    env.NEXT_PUBLIC_VERCEL_URL !== "localhost:3000"
+  )
     return `https://${env.NEXT_PUBLIC_VERCEL_URL}`;
   return `http://localhost:${process.env.PORT ?? 3000}`;
 }
