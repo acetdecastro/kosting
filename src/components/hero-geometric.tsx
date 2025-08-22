@@ -106,7 +106,7 @@ export default function HeroGeometric({
         className,
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-300/20 to-rose-300/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-300/20 to-rose-300/20 blur-2xl" />
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
           delay={0.3}
@@ -181,7 +181,7 @@ export default function HeroGeometric({
             </Link>
             <Link
               href="/auth/sign-up"
-              className="to-primary/90 sm:text- bg-gradient-to-b from-teal-500 bg-clip-text text-sm font-extrabold text-transparent transition-all duration-200 hover:text-teal-200/40 sm:text-lg md:text-xl"
+              className="to-primary/80 sm:text- bg-gradient-to-b from-teal-500 bg-clip-text text-sm font-extrabold text-transparent transition-all duration-200 hover:text-teal-200/40 sm:text-lg md:text-xl"
             >
               Sign Up For Free
             </Link>

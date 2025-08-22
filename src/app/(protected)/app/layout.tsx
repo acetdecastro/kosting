@@ -8,7 +8,20 @@ import { cloakSSROnlySecret } from "ssr-only-secrets";
 import { ThemeProvider } from "@src/components/providers/theme-provider";
 import { AppSidebar } from "@src/components/app-sidebar";
 import { SiteHeader } from "@src/components/site-header";
-import { SidebarInset, SidebarProvider } from "@src/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@src/components/ui/sidebar";
+import { Separator } from "@src/components/ui/separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@src/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Kosting",
@@ -49,9 +62,31 @@ export default async function RootLayout({
                 } as React.CSSProperties
               }
             >
-              <AppSidebar variant="inset" />
+              <AppSidebar />
               <SidebarInset>
                 <SiteHeader />
+                {/* <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+                  <div className="flex items-center gap-2 px-4">
+                    <SidebarTrigger className="-ml-1" />
+                    <Separator
+                      orientation="vertical"
+                      className="mr-2 data-[orientation=vertical]:h-4"
+                    />
+                    <Breadcrumb>
+                      <BreadcrumbList>
+                        <BreadcrumbItem className="hidden md:block">
+                          <BreadcrumbLink href="#">
+                            Building Your Application
+                          </BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator className="hidden md:block" />
+                        <BreadcrumbItem>
+                          <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                        </BreadcrumbItem>
+                      </BreadcrumbList>
+                    </Breadcrumb>
+                  </div>
+                </header> */}
                 {children}
               </SidebarInset>
             </SidebarProvider>
