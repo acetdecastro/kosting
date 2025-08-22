@@ -6,6 +6,8 @@
 @theme {
   --font-sans: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --font-number: var(--font-fira-number), ui-monospace, monospace;
 }
 
 @theme inline {
@@ -123,4 +125,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.font-number {
+  font-family: var(--font-number);
 }

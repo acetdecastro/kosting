@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { cn } from "@lib/utils";
 import { ThemeSwitcher } from "./theme-switcher";
 import Link from "next/link";
+import { ROUTES } from "@src/constants";
+import LandingBrand from "@src/components/landing-brand";
 
 export type ElegantShapeProps = {
   className?: string;
@@ -151,41 +153,39 @@ export default function HeroGeometric({
       </div>
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center">
-          {/* Badge */}
-          {/* <motion.div
-            custom={0}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 md:mb-12"
-          >
-            <Circle className="h-2 w-2 fill-rose-500/80" />
-            <span className="text-sm tracking-wide text-white/60">{badge}</span>
-          </motion.div> */}
-
           <motion.div
             custom={0}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="bg-secondary/60 shadow-primary/50 mb-8 inline-flex w-auto items-center gap-2 rounded-3xl px-4 py-1 shadow sm:gap-6 md:mb-12"
+            className="bg-secondary/60 shadow-primary/50 mb-8 inline-flex w-full max-w-fit items-center justify-between gap-2 rounded-3xl px-3 py-2 shadow sm:gap-4 sm:px-4 sm:py-2 md:mb-12 md:gap-6 md:px-6"
           >
-            <Link href="/" className="text-xs sm:text-sm md:text-lg">
-              Kosting
-            </Link>
-            <Link
-              href="/auth/sign-in"
-              className="hover:text-muted-foreground text-xs transition-all duration-200 sm:text-sm md:text-lg"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/sign-up"
-              className="to-primary/80 sm:text- bg-gradient-to-b from-teal-500 bg-clip-text text-sm font-extrabold text-transparent transition-all duration-200 hover:text-teal-200/40 sm:text-lg md:text-xl"
-            >
-              Sign Up For Free
-            </Link>
-            <ThemeSwitcher />
+            <LandingBrand />
+
+            {/* Navigation Links Container */}
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
+              {/* Sign In Link */}
+              <Link
+                href={ROUTES.auth.signIn}
+                className="hover:text-muted-foreground text-xs whitespace-nowrap transition-all duration-200 sm:text-sm md:text-base"
+              >
+                Sign In
+              </Link>
+
+              {/* Sign Up Link */}
+              <Link
+                href={ROUTES.auth.signUp}
+                className="to-primary/80 bg-gradient-to-b from-teal-400 bg-clip-text text-xs font-extrabold whitespace-nowrap text-transparent transition-all duration-200 hover:text-teal-200/50 sm:text-sm md:text-base lg:text-lg"
+              >
+                {/* <span className="hidden sm:inline">Sign Up For Free</span> */}
+                <span>Sign Up</span>
+              </Link>
+
+              {/* Theme Switcher */}
+              <div className="shrink-0">
+                <ThemeSwitcher />
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -196,13 +196,13 @@ export default function HeroGeometric({
             className="w-auto"
           >
             <h1 className="mb-6 text-2xl font-bold sm:text-5xl md:mb-8 md:text-8xl">
-              <span className="from-primary/60 to-primary bg-gradient-to-b bg-clip-text text-transparent">
+              <span className="from-primary/70 to-primary bg-gradient-to-b bg-clip-text text-transparent">
                 {title1}
               </span>
               <br />
               <span
                 className={cn(
-                  "from-primary to-primary/60 bg-gradient-to-b bg-clip-text text-transparent",
+                  "from-primary to-primary/70 bg-gradient-to-b bg-clip-text text-transparent",
                 )}
               >
                 {title2}
@@ -216,7 +216,7 @@ export default function HeroGeometric({
             initial="hidden"
             animate="visible"
           >
-            <p className="text-primary/60 mx-auto mb-8 max-w-xl px-4 text-xs font-normal sm:text-base md:text-2xl">
+            <p className="text-primary/70 mx-auto mb-8 max-w-xl px-4 text-xs font-normal sm:text-base md:text-2xl">
               {description}
             </p>
           </motion.div>

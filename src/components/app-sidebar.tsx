@@ -1,12 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { AudioWaveform, Command, GalleryVerticalEnd } from "lucide-react";
 
 import { NavMain } from "@src/components/nav-main";
-import { NavProjects } from "@src/components/nav-projects";
 import { NavUser } from "@src/components/nav-user";
-import { TeamSwitcher } from "@src/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -14,46 +11,28 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@src/components/ui/sidebar";
-import { appSidebarItems } from "@src/constants";
-
-const data = {
-  user: {
-    name: "shadcn",
-    email: "mail@example.com",
-    // avatar: "",
-    avatar: "",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
-};
+import { appSidebarItems, brand } from "@src/constants";
+import { InAppBrand } from "./in-app-brand";
+import { api } from "@src/trpc/react";
+import { Skeleton } from "./ui/skeleton";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [user] = api.user.me.useSuspenseQuery();
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <InAppBrand brand={brand} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={appSidebarItems} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <React.Suspense fallback={<Skeleton className="px-6 py-5" />}>
+          <NavUser user={user} />
+        </React.Suspense>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

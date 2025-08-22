@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { env } from "@src/env";
+import { ROUTES } from "@src/constants";
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -44,14 +45,14 @@ export async function updateSession(request: NextRequest) {
   const url = request.nextUrl.clone();
 
   if (user) {
-    if (pathname === "/app") url.pathname = "/app/dashboard";
+    if (pathname === ROUTES.app.root) url.pathname = ROUTES.app.dashboard;
     else if (
       pathname.startsWith("/auth") &&
-      pathname !== "/auth/email-confirmed"
+      pathname !== ROUTES.auth.emailConfirmed
     )
-      url.pathname = "/app/dashboard";
+      url.pathname = ROUTES.app.dashboard;
   } else {
-    if (pathname.startsWith("/app")) url.pathname = "/auth/sign-in";
+    if (pathname.startsWith("/app")) url.pathname = ROUTES.auth.signIn;
   }
 
   if (url.pathname !== pathname) {

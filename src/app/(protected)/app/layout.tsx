@@ -1,7 +1,7 @@
 import "@src/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Fira_Sans } from "next/font/google";
+import { Fira_Sans, Fira_Code } from "next/font/google";
 import { TRPCReactProvider } from "@src/trpc/react";
 import { headers } from "next/headers";
 import { cloakSSROnlySecret } from "ssr-only-secrets";
@@ -22,6 +22,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@src/components/ui/breadcrumb";
+import { createCaller } from "@src/server/api/root";
+import { createContext } from "@src/trpc/server";
 
 export const metadata: Metadata = {
   title: "Kosting",
@@ -35,6 +37,11 @@ const firaSans = Fira_Sans({
   weight: ["200", "400", "500", "600", "700", "800", "900"],
 });
 
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-number",
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -43,9 +50,15 @@ export default async function RootLayout({
     cookie ?? "",
     "SECRET_CLIENT_COOKIE_VAR",
   );
+  // const caller = createCaller(createContext);
+  // const user = await caller.user.me();
 
   return (
-    <html lang="en" className={firaSans.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${firaSans.variable} ${firaCode.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased">
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider

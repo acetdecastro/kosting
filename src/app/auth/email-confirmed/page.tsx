@@ -11,6 +11,7 @@ import {
 import { Button } from "@src/components/ui/button";
 import Link from "next/link";
 import { FullPageLoader } from "@src/components/ui/full-page-loader";
+import { ROUTES } from "@src/constants";
 
 export default function Page() {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function Page() {
 
       // give loader a moment to render before navigating
       setTimeout(() => {
-        router.push("/app/dashboard");
+        router.push(ROUTES.app.dashboard);
       }, 1000);
     }, 4500);
 
@@ -45,7 +46,7 @@ export default function Page() {
             your dashboard shortly.
           </p>
           <div className="flex flex-col gap-2">
-            <Link href="/app/dashboard" passHref>
+            <Link href={ROUTES.app.dashboard}>
               <Button className="w-full" onClick={() => setRedirecting(true)}>
                 Go now
               </Button>
