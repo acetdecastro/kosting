@@ -62,10 +62,10 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "border-primary/80 backdrop-blur-[2px]",
-            "shadow-[0_5px_3px_0_rgba(255,255,255,0.1)]",
+            "backdrop-blur-[2px]",
+            "shadow-[0_2px_8px_0_rgba(255,255,255,0.1)]",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]",
+            "after:bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2),transparent_70%)]",
           )}
         />
       </motion.div>
@@ -106,7 +106,7 @@ export default function HeroGeometric({
         className,
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-200/30 via-transparent to-rose-300/30 blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-300/20 to-rose-300/20" />
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
           delay={0.3}
@@ -196,13 +196,13 @@ export default function HeroGeometric({
             className="w-auto"
           >
             <h1 className="mb-6 text-2xl font-bold sm:text-5xl md:mb-8 md:text-8xl">
-              <span className="from-primary to-primary/80 bg-gradient-to-b bg-clip-text text-transparent">
+              <span className="from-primary/60 to-primary bg-gradient-to-b bg-clip-text text-transparent">
                 {title1}
               </span>
               <br />
               <span
                 className={cn(
-                  "from-primary to-primary/70 bg-gradient-to-b bg-clip-text text-transparent",
+                  "from-primary to-primary/60 bg-gradient-to-b bg-clip-text text-transparent",
                 )}
               >
                 {title2}
@@ -222,7 +222,8 @@ export default function HeroGeometric({
           </motion.div>
         </div>
       </div>
-      <div className="from-accent/10 to-primary/20 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent" />
+      {/* <div className="from-accent/10 to-primary/20 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent blur-2xl" /> */}
+      {/* <div className="from-accent to-primary pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent" /> */}
     </div>
   );
 }

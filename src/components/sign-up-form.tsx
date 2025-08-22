@@ -82,7 +82,7 @@ export function SignUpForm({
       if (existsError) throw existsError;
 
       if (exists) {
-        setError("Try using a different email address, or signing in");
+        setError("Try using a different email address or signing in");
         setIsLoading(false);
         return;
       }
