@@ -43,7 +43,7 @@ export default async function RootLayout({
         <TRPCReactProvider ssrOnlySecret={encryptedCookie}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
