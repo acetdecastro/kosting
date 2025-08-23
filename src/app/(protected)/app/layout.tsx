@@ -9,7 +9,7 @@ import { ThemeProvider } from "@src/components/providers/theme-provider";
 import { AppSidebar } from "@src/components/app-sidebar";
 import { AppHeader } from "@src/components/app-header";
 import { SidebarInset, SidebarProvider } from "@src/components/ui/sidebar";
-import { HydrateClient } from "@src/trpc/server";
+import { api, HydrateClient } from "@src/trpc/server";
 
 export const metadata: Metadata = {
   title: "Kosting",
@@ -36,6 +36,7 @@ export default async function RootLayout({
     cookie ?? "",
     "SECRET_CLIENT_COOKIE_VAR",
   );
+  void api.user.me.prefetch();
 
   return (
     <html
