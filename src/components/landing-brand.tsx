@@ -14,7 +14,7 @@ export default function LandingBrand() {
       href={ROUTES.root}
       className="font-number flex shrink-0 items-center gap-1 text-base select-none"
     >
-      <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300/70 to-rose-300/70 text-black">
+      <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-200 to-amber-200 text-black">
         <span className="text-sm font-extrabold sm:text-base md:text-lg">
           {/* {brand.name.charAt(0).toUpperCase()}
            */}
@@ -22,7 +22,7 @@ export default function LandingBrand() {
         </span>
       </div>
       {!isMobile && (
-        <span className="text-primary font-bold tracking-tighter">
+        <span className="text-primary font-medium tracking-tighter">
           {brand.name}
         </span>
       )}

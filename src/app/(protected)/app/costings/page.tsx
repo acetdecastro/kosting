@@ -1,25 +1,26 @@
-import { HydrateClient } from "@src/trpc/server";
-
-import { ChartAreaInteractive } from "@src/components/chart-area-interactive";
-import { SectionCards } from "@src/components/section-cards";
-import { DataTable } from "@src/components/data-table";
-
-import data from "../dashboard/data.json";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@src/components/ui/card";
 
 export default async function Page() {
   return (
-    <HydrateClient>
-      <div className="flex flex-1 flex-col">
-        <div className="@container/main flex flex-1 flex-col gap-2">
-          <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-            <SectionCards />
-            <div className="px-4 lg:px-6">
-              <ChartAreaInteractive />
-            </div>
-            <DataTable data={data} />
-          </div>
-        </div>
+    <div className="flex flex-1 flex-col">
+      <div className="flex flex-col px-4 py-6 lg:px-6">
+        <Card className="mx-auto min-h-[100vh] w-full flex-1 rounded-xl md:min-h-min">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">New Form</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {/* 👉 Place your form inputs here */}
+          </CardContent>
+        </Card>
       </div>
-    </HydrateClient>
+    </div>
   );
 }

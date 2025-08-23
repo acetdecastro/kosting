@@ -86,7 +86,7 @@ export function SignInForm({
   };
 
   if (redirecting) {
-    return <FullPageLoader message="Redirecting" />;
+    return <FullPageLoader />;
   }
 
   return (

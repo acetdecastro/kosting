@@ -14,19 +14,15 @@ export function InAppBrand({ brand }: { brand: BrandInfo }) {
       <SidebarMenuItem>
         <SidebarMenuButton
           size="lg"
-          className="font-number cursor-default !bg-transparent select-none hover:!bg-transparent focus-visible:!ring-0 active:!bg-transparent"
+          className="font-number flex cursor-default items-center gap-1 !bg-transparent select-none hover:!bg-transparent focus-visible:!ring-0 active:!bg-transparent"
           onClick={(e) => e.preventDefault()}
         >
-          <div className="flex aspect-square size-8 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300/70 to-rose-300/70 text-black/90">
-            <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300/70 to-rose-300/70 text-black">
-              <span className="text-sm font-extrabold sm:text-base md:text-lg">
-                {/* {brand.name.charAt(0).toUpperCase()}
-                 */}
-                <TrendingUp size={20} />
-              </span>
-            </div>
+          <div className="flex aspect-square size-8 items-center justify-center rounded-xl bg-gradient-to-br from-teal-200 to-amber-200 text-black/90">
+            {/* <brand.logo className="size-4" /> */}
+
+            <TrendingUp size={20} />
           </div>
-          <span className="text-primary font-bold tracking-tighter">
+          <span className="text-primary font-medium tracking-tighter">
             {brand.name}
           </span>
         </SidebarMenuButton>

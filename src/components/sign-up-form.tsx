@@ -113,7 +113,7 @@ export function SignUpForm({
   };
 
   if (redirecting) {
-    return <FullPageLoader message="Redirecting" />;
+    return <FullPageLoader />;
   }
 
   return (

@@ -31,7 +31,7 @@ export default function Page() {
   }, [router]);
 
   if (redirecting) {
-    return <FullPageLoader message="Redirecting" />;
+    return <FullPageLoader />;
   }
 
   return (

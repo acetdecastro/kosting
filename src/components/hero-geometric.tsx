@@ -108,7 +108,7 @@ export default function HeroGeometric({
         className,
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-300/20 to-rose-300/20 blur-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-300/20 to-rose-300/20" />
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
           delay={0.3}
@@ -158,7 +158,7 @@ export default function HeroGeometric({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="bg-secondary/60 shadow-primary/50 mb-8 inline-flex w-full max-w-fit items-center justify-between gap-2 rounded-3xl px-3 py-2 shadow sm:gap-4 sm:px-4 sm:py-2 md:mb-12 md:gap-6 md:px-6"
+            className="bg-secondary/90 shadow-primary/50 mb-8 inline-flex w-full max-w-fit items-center justify-between gap-2 rounded-3xl px-3 py-2 shadow sm:gap-4 sm:px-4 sm:py-2 md:mb-12 md:gap-6 md:px-6"
           >
             <LandingBrand />
 
@@ -175,9 +175,8 @@ export default function HeroGeometric({
               {/* Sign Up Link */}
               <Link
                 href={ROUTES.auth.signUp}
-                className="to-primary/80 bg-gradient-to-b from-teal-400 bg-clip-text text-xs font-extrabold whitespace-nowrap text-transparent transition-all duration-200 hover:text-teal-200/50 sm:text-sm md:text-base lg:text-lg"
+                className="hover:text-muted-foreground text-xs whitespace-nowrap underline decoration-teal-500/80 decoration-wavy underline-offset-6 transition-all duration-200 hover:decoration-teal-300/50 sm:text-sm md:text-base"
               >
-                {/* <span className="hidden sm:inline">Sign Up For Free</span> */}
                 <span>Sign Up</span>
               </Link>
 
@@ -196,13 +195,13 @@ export default function HeroGeometric({
             className="w-auto"
           >
             <h1 className="mb-6 text-2xl font-bold sm:text-5xl md:mb-8 md:text-8xl">
-              <span className="from-primary/70 to-primary bg-gradient-to-b bg-clip-text text-transparent">
+              <span className="from-primary/80 to-primary bg-gradient-to-b bg-clip-text text-transparent">
                 {title1}
               </span>
               <br />
               <span
                 className={cn(
-                  "from-primary to-primary/70 bg-gradient-to-b bg-clip-text text-transparent",
+                  "from-primary to-primary/80 bg-gradient-to-b bg-clip-text text-transparent",
                 )}
               >
                 {title2}
@@ -216,7 +215,7 @@ export default function HeroGeometric({
             initial="hidden"
             animate="visible"
           >
-            <p className="text-primary/70 mx-auto mb-8 max-w-xl px-4 text-xs font-normal sm:text-base md:text-2xl">
+            <p className="text-primary/60 mx-auto mb-8 max-w-xl px-4 text-xs font-normal sm:text-base md:text-2xl">
               {description}
             </p>
           </motion.div>

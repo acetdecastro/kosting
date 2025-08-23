@@ -37,10 +37,13 @@ export function NavUser({ user }: { user: UserClaims }) {
   const supabase = createClient();
 
   const handleSignout = async () => {
+    await supabase.auth.refreshSession();
     const { error } = await supabase.auth.signOut();
     if (error) {
       // TODO
       // 1. Add Sonner when signing out fails
+      console.log(error);
+      return;
     }
     router.push(ROUTES.root);
   };
