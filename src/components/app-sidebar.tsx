@@ -17,7 +17,7 @@ import { api } from "@src/trpc/react";
 import { Skeleton } from "./ui/skeleton";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const [user] = api.user.me.useSuspenseQuery();
+  const [user] = api.users.me.useSuspenseQuery();
 
   return (
     <Sidebar collapsible="icon" {...props}>

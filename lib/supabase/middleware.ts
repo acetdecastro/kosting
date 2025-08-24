@@ -45,14 +45,22 @@ export async function updateSession(request: NextRequest) {
   const url = request.nextUrl.clone();
 
   if (user) {
-    if (pathname === ROUTES.app.root) url.pathname = ROUTES.app.dashboard;
-    else if (
+    if (pathname === ROUTES.app.root) {
+      url.pathname = ROUTES.app.dashboard;
+    } else if (pathname === "/auth") {
+      url.pathname = ROUTES.app.dashboard;
+    } else if (
       pathname.startsWith("/auth") &&
       pathname !== ROUTES.auth.emailConfirmed
-    )
+    ) {
       url.pathname = ROUTES.app.dashboard;
+    }
   } else {
-    if (pathname.startsWith("/app")) url.pathname = ROUTES.auth.signIn;
+    if (pathname.startsWith("/app")) {
+      url.pathname = ROUTES.auth.signIn;
+    } else if (pathname === "/auth") {
+      url.pathname = ROUTES.auth.signIn;
+    }
   }
 
   if (url.pathname !== pathname) {

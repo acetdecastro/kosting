@@ -36,7 +36,7 @@ export default async function RootLayout({
     cookie ?? "",
     "SECRET_CLIENT_COOKIE_VAR",
   );
-  void api.user.me.prefetch();
+  void api.users.me.prefetch();
 
   return (
     <html
