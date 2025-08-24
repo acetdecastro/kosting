@@ -15,8 +15,9 @@ export function getBaseUrl() {
   if (
     env.NEXT_PUBLIC_VERCEL_URL &&
     env.NEXT_PUBLIC_VERCEL_URL !== "localhost:3000"
-  )
+  ) {
     return `https://${env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
   return `http://localhost:${process.env.PORT ?? 3000}`;
 }
 

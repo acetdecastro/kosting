@@ -225,7 +225,11 @@ export function SignUpForm({
                   )}
                 />
 
-                {error && <p className="text-destructive text-sm">{error}</p>}
+                {error && (
+                  <p className="text-destructive text-center text-sm">
+                    {error}
+                  </p>
+                )}
 
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? (

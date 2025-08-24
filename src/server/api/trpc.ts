@@ -13,7 +13,11 @@ import { db } from "@src/server/db";
 import { createClient } from "@lib/supabase/server";
 import { type JwtPayload } from "@supabase/supabase-js";
 
-export type UserClaims = JwtPayload;
+// Extend JwtPayload with custom fields
+export interface UserClaims extends JwtPayload {
+  email: string; // required
+  ssd: string; // if you also want to store the userId you’ve been using
+}
 
 /**
  * 1. CONTEXT
@@ -30,7 +34,11 @@ export type UserClaims = JwtPayload;
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   const supabase = await createClient();
   const { data } = await supabase.auth.getClaims();
-  const user: UserClaims | null = data?.claims ?? null;
+  const claims = data?.claims as JwtPayload | null;
+  const user: UserClaims | null =
+    claims && typeof claims === "object" && "email" in claims
+      ? (claims as UserClaims)
+      : null;
 
   return {
     db,
