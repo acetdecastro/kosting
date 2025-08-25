@@ -3,8 +3,6 @@ import { api } from "@src/trpc/server";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
-  void api.suppliers.getAll.prefetch({
-    orderBy: { field: "createdAt", direction: "desc" },
-  });
+  void api.suppliers.getAll.prefetch();
   redirect(ROUTES.app.suppliers.overview);
 }
