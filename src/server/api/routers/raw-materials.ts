@@ -6,7 +6,7 @@ import { rawMaterials } from "@src/server/db/schema";
 export const rawMaterialsRouter = createTRPCRouter({
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.rawMaterials.findMany({
-      where: eq(rawMaterials.userId, ctx.user.ssd),
+      where: eq(rawMaterials.userId, ctx.user.sub),
     });
   }),
 
@@ -16,7 +16,7 @@ export const rawMaterialsRouter = createTRPCRouter({
       return ctx.db.query.rawMaterials.findFirst({
         where: and(
           eq(rawMaterials.id, input.id),
-          eq(rawMaterials.userId, ctx.user.ssd),
+          eq(rawMaterials.userId, ctx.user.sub),
         ),
       });
     }),

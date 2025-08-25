@@ -10,6 +10,7 @@ import { AppSidebar } from "@src/components/app-sidebar";
 import { AppHeader } from "@src/components/app-header";
 import { SidebarInset, SidebarProvider } from "@src/components/ui/sidebar";
 import { api, HydrateClient } from "@src/trpc/server";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Kosting",
@@ -68,6 +69,7 @@ export default async function RootLayout({
                   {children}
                 </SidebarInset>
               </SidebarProvider>
+              <Toaster position="bottom-center" />
             </ThemeProvider>
           </HydrateClient>
         </TRPCReactProvider>

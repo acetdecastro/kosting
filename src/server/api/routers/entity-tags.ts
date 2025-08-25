@@ -6,7 +6,7 @@ import { entityTags } from "@src/server/db/schema";
 export const entityTagsRouter = createTRPCRouter({
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.entityTags.findMany({
-      where: eq(entityTags.userId, ctx.user.ssd),
+      where: eq(entityTags.userId, ctx.user.sub),
     });
   }),
 
@@ -16,7 +16,7 @@ export const entityTagsRouter = createTRPCRouter({
       return ctx.db.query.entityTags.findFirst({
         where: and(
           eq(entityTags.id, input.id),
-          eq(entityTags.userId, ctx.user.ssd),
+          eq(entityTags.userId, ctx.user.sub),
         ),
       });
     }),

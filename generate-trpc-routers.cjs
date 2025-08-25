@@ -36,7 +36,7 @@ import { ${entity} } from "@src/server/db/schema";
 export const ${routerName} = createTRPCRouter({
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.${entity}.findMany({
-      where: eq(${entity}.userId, ctx.user.ssd),
+      where: eq(${entity}.userId, ctx.user.sub),
     });
   }),
 
@@ -46,7 +46,7 @@ export const ${routerName} = createTRPCRouter({
       return ctx.db.query.${entity}.findFirst({
         where: and(
           eq(${entity}.id, input.id),
-          eq(${entity}.userId, ctx.user.ssd),
+          eq(${entity}.userId, ctx.user.sub),
         ),
       });
     }),

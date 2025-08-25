@@ -3,9 +3,17 @@ export const ROUTES = {
   app: {
     root: "/app",
     dashboard: "/app/dashboard",
-    costings: {
-      root: "/app/costings",
-      suppliers: "/app/costings/suppliers",
+    products: {
+      root: "/app/products",
+      overview: "/app/products/overview",
+      costings: "/app/products/costings",
+      versions: "/app/products/versions",
+      tags: "/app/products/tags",
+    },
+    suppliers: {
+      root: "/app/suppliers",
+      overview: "/app/suppliers/overview",
+      details: "/app/suppliers/details",
     },
   },
   auth: {

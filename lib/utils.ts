@@ -24,3 +24,30 @@ export function getBaseUrl() {
 export function withEllipsis(text: string): string {
   return text.endsWith("...") ? text : `${text}...`;
 }
+
+type RouteObject = {
+  [key: string]: string | RouteObject;
+};
+
+type GetTabsFunction = (
+  routes: RouteObject,
+  parentKey: string,
+) => string[] | undefined;
+
+export const getTabs: GetTabsFunction = (routes, parentKey) => {
+  const parentRouteObject = routes[parentKey];
+
+  if (
+    typeof parentRouteObject !== "object" ||
+    !parentRouteObject ||
+    !Object.keys(parentRouteObject).length
+  ) {
+    return;
+  }
+
+  const tabs: string[] = Object.keys(parentRouteObject)
+    .filter((key) => key !== "root")
+    .map((key) => key.charAt(0).toUpperCase() + key.slice(1));
+
+  return tabs;
+};

@@ -24,7 +24,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-md text-center">
+      <Card className="bg-background w-full max-w-md border-0 text-center shadow-none">
         <CardHeader className="space-y-4">
           <div className="text-muted-foreground font-number text-6xl font-bold">
             500
@@ -36,11 +36,12 @@ export default function Error({ error, reset }: ErrorProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-col gap-2">
-            <Button onClick={reset} variant="default" className="w-full">
+            <Button
+              onClick={() => window.location.reload()}
+              variant="default"
+              className="w-full"
+            >
               Try Again
-            </Button>
-            <Button asChild variant="outline" className="w-full">
-              <Link href={ROUTES.root}>Go Back Home</Link>
             </Button>
           </div>
         </CardContent>
