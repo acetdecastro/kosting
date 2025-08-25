@@ -36,7 +36,11 @@ export default function Error({ error, reset }: ErrorProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-col gap-2">
-            <Button onClick={reset} variant="default" className="w-full">
+            <Button
+              onClick={() => window.location.reload()}
+              variant="default"
+              className="w-full"
+            >
               Try Again
             </Button>
             <Button asChild variant="outline" className="w-full">

@@ -1,8 +1,6 @@
-import { HydrateClient } from "@src/trpc/server";
-
 import { ChartAreaInteractive } from "@src/components/chart-area-interactive";
 import { SectionCards } from "@src/components/section-cards";
-import { DataTable } from "@src/components/data-table";
+import { DataTable } from "@src/components/dashboard-example-data-table";
 
 import data from "./data.json";
 

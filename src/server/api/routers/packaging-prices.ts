@@ -6,7 +6,7 @@ import { packagingPrices } from "@src/server/db/schema";
 export const packagingPricesRouter = createTRPCRouter({
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.packagingPrices.findMany({
-      where: eq(packagingPrices.userId, ctx.user.ssd),
+      where: eq(packagingPrices.userId, ctx.user.sub),
     });
   }),
 
@@ -16,7 +16,7 @@ export const packagingPricesRouter = createTRPCRouter({
       return ctx.db.query.packagingPrices.findFirst({
         where: and(
           eq(packagingPrices.id, input.id),
-          eq(packagingPrices.userId, ctx.user.ssd),
+          eq(packagingPrices.userId, ctx.user.sub),
         ),
       });
     }),

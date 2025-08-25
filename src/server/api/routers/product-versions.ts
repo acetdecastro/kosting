@@ -3,11 +3,10 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { productVersions } from "@src/server/db/schema";
 
-
 export const productVersionsRouter = createTRPCRouter({
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.productVersions.findMany({
-      where: eq(productVersions.userId, ctx.user.ssd),
+      where: eq(productVersions.userId, ctx.user.sub),
     });
   }),
 
@@ -17,9 +16,8 @@ export const productVersionsRouter = createTRPCRouter({
       return ctx.db.query.productVersions.findFirst({
         where: and(
           eq(productVersions.id, input.id),
-          eq(productVersions.userId, ctx.user.ssd),
+          eq(productVersions.userId, ctx.user.sub),
         ),
       });
     }),
 });
-

@@ -1,5 +1,11 @@
 import { ROUTES } from "./routes";
-import { LayoutDashboard, Calculator, type LucideIcon } from "lucide-react";
+import {
+  LayoutDashboard,
+  Calculator,
+  type LucideIcon,
+  Boxes,
+  Truck,
+} from "lucide-react";
 
 export type NavItem = {
   title: string;
@@ -19,13 +25,32 @@ export const appSidebarItems: NavItem[] = [
     items: [],
   },
   {
-    title: "Costings",
-    url: ROUTES.app.costings.root,
-    icon: Calculator,
+    title: "Products",
+    url: ROUTES.app.products.root,
+    icon: Boxes,
     items: [
       {
-        title: "Suppliers",
-        url: ROUTES.app.costings.suppliers,
+        title: "Costings",
+        url: ROUTES.app.products.costings,
+      },
+      {
+        title: "Versions",
+        url: ROUTES.app.products.versions,
+      },
+      {
+        title: "Tags",
+        url: ROUTES.app.products.tags,
+      },
+    ],
+  },
+  {
+    title: "Suppliers",
+    url: ROUTES.app.suppliers.root,
+    icon: Truck,
+    items: [
+      {
+        title: "Overview",
+        url: ROUTES.app.suppliers.overview,
       },
     ],
   },

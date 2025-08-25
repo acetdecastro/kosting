@@ -14,11 +14,9 @@ export default async function Page() {
       <div className="flex flex-col px-4 py-6 lg:px-6">
         <Card className="mx-auto min-h-[100vh] w-full flex-1 rounded-xl md:min-h-min">
           <CardHeader>
-            <CardTitle className="text-xl font-semibold">New Form</CardTitle>
+            <CardTitle className="text-xl font-semibold">Products</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {/* 👉 Place your form inputs here */}
-          </CardContent>
+          <CardContent className="space-y-4">Products</CardContent>
         </Card>
       </div>
     </div>

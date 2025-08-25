@@ -24,7 +24,7 @@ export const suppliers = pgTable(
     id: uuid().defaultRandom().primaryKey().notNull(),
     userId: uuid("user_id").notNull(),
     name: varchar({ length: 100 }).notNull(),
-    contactInfo: jsonb("contact_info"),
+    metadata: jsonb("metadata"),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
       .defaultNow()
       .notNull(),
@@ -46,5 +46,6 @@ export const suppliers = pgTable(
       sql`user_id`,
       sql`null`,
     ),
+    // uniqueIndex("idx_suppliers_user_name_unique").on(t.userId, t.name),
   ],
 );

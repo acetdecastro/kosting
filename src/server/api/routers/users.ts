@@ -10,7 +10,7 @@ export const usersRouter = createTRPCRouter({
 
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.query.users.findMany({
-      where: eq(users.id, ctx.user.ssd),
+      where: eq(users.id, ctx.user.sub),
     });
   }),
 
@@ -18,7 +18,7 @@ export const usersRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
       return ctx.db.query.users.findFirst({
-        where: and(eq(users.id, ctx.user.ssd), eq(users.id, input.id)),
+        where: and(eq(users.id, ctx.user.sub), eq(users.id, input.id)),
       });
     }),
 });
